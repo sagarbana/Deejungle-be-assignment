@@ -6,6 +6,8 @@ beforeAll(async () => {
   if (!AppDataSource.isInitialized) {
     await AppDataSource.initialize();
   }
+  await AppDataSource.getRepository("Task").createQueryBuilder().delete().execute();
+  await AppDataSource.getRepository("User").createQueryBuilder().delete().execute();
 });
 
 afterAll(async () => {

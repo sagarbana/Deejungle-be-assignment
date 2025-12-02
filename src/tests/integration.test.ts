@@ -4,6 +4,8 @@ import { AppDataSource } from "../config/database";
 
 beforeAll(async () => {
   await AppDataSource.initialize();
+  await AppDataSource.getRepository("Task").createQueryBuilder().delete().execute();
+  await AppDataSource.getRepository("User").createQueryBuilder().delete().execute();
 });
 
 afterAll(async () => {
